@@ -3,7 +3,7 @@ import {wait} from "@testing-library/user-event/dist/utils";
 
 export default class BookService {
     static async getAll(limit = 99999, page = 1) {
-        const response = await axios.get('http://localhost:8080/books/getBooks', {
+        const response = await axios.get('http://http://185.253.7.239/:8088/books/getBooks', {
             // headers: {
             //     "Access-Control-Allow-Origin": "*"
             // },
