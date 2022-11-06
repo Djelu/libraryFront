@@ -1,3 +1,39 @@
+.filterForm{
+    width: 20%;
+    border: 1px solid black;
+    position: absolute;
+    background: white;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.inRow{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    padding-right: 10px;
+}
+.label{
+    display: grid;
+    grid-template-columns: 25% 75%;
+    margin-right: 5px;
+}
+.space{
+    margin-left: 5px;
+}
+.filterList{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-row-gap: 3px;
+}
+.labelButton{
+    margin-left: 5px;
+}
+.buttonOk{
+    display: flex;
+    justify-content: flex-end;
+    margin: 15px 10px 10px 0;
+}
+/*
 .filterThContent{
     width: 100%;
     display: flex;
@@ -25,4 +61,4 @@
 }
 .filter8{
     width: 8.5%;
-}
+}*/

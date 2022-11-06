@@ -32,4 +32,17 @@ export default class Converting {
             default: return value;
         }
     }
+    static getColLocaleName(colName){
+        switch (colName) {
+            case "bookName": return  "Название";
+            case "author": return "Автор";
+            case "genre": return "Жанры";
+            case "year": return "Год";
+            case "bookDuration": return "Длина";
+            case "imgUrl": return "Картинка";
+            case "torUrl": return "Торрент";
+            case "torSize": return "Размер";
+            default: return colName;
+        }
+    }
 }

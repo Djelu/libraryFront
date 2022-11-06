@@ -10,6 +10,9 @@ import HandledElem from "./HandledElem";
 import MyTable from "./UI/myTable/MyTable";
 import Filters from "./UI/filters/Filters";
 import Loader from "./UI/loader/Loader";
+import FilterBox from "./UI/filters/FilterBox";
+import FilterForm from "./UI/filters/FilterForm";
+import MyCheckbox from "./UI/checkbox/MyCheckbox";
 
 const Books = () => {
     const cols = ["bookName", "imgUrl", "author", "genre", "year", "torUrl", "torSize", "bookDuration"];
@@ -46,11 +49,23 @@ const Books = () => {
         setBooksData({...booksData, filter: newFilter})
     }
 
-    const filterClick = (colName) => {
-        const newFilterData = {...booksData.filterType};
-        newFilterData[colName] = !newFilterData[colName];
-        setBooksData({...booksData, filterType: newFilterData})
+    const filterSubmit = function (colData){
+        let newFilter = {...booksData.filter}
+        let newFilterType = {...booksData.filterType}
+        const keys = Object.keys(colData);
+        keys.forEach(key => {
+            newFilter[key] = colData[key].value;
+            newFilterType[key] = colData[key].isPlus;
+        })
+        setBooksData({...booksData, filter: newFilter, filterType: newFilterType})
+        setFiltersVisible(false)
     }
+
+    // const filterClick = (colName) => {
+    //     const newFilterData = {...booksData.filterType};
+    //     newFilterData[colName] = !newFilterData[colName];
+    //     setBooksData({...booksData})
+    // }
 
     const filtersClean = () => {
         setBooksData({
@@ -60,14 +75,28 @@ const Books = () => {
         })
     }
 
+    const [filtersVisible, setFiltersVisible] = useState(false);
+    const filterCheckboxClick = () => {
+        setFiltersVisible(!filtersVisible);
+        //filtersClean();
+    }
+
+
     return (<div>
-        <Filters
-            cols={cols}
-            filtersData={booksData.filterType}
-            filtersClean={filtersClean}
-            filterFoo={filterByCol}
-            filterClick={filterClick}
-        />
+        {/*<Filters*/}
+        {/*    cols={cols}*/}
+        {/*    filtersData={booksData.filterType}*/}
+        {/*    filtersClean={filtersClean}*/}
+        {/*    filterFoo={filterByCol}*/}
+        {/*    filterClick={filterClick}*/}
+        {/*/>*/}
+        <MyCheckbox value={filtersVisible} onClick={filterCheckboxClick}>Фильтр</MyCheckbox>
+        {filtersVisible
+            ?<FilterForm
+                cols={cols}
+                submitFoo={filterSubmit}
+                booksData={booksData}
+            /> :<div/>}
         <MyTable
             sortFoo={sortByCol}
             cols={cols}

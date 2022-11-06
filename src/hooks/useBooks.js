@@ -150,7 +150,7 @@ const getSumOfValues = (data, keys) => {
 
 export const useBooks = (books, booksData) => {
     const {sort, filter, filterType} = booksData;
-    const sortedBooks = useSortedBooks(books, sort)
-    const filteredBooks = useFilteredBooks(sortedBooks, filter, filterType)
-    return filteredBooks;
+    const filteredBooks = useFilteredBooks(books, filter, filterType)
+    const sortedBooks = useSortedBooks(filteredBooks, sort)
+    return sortedBooks;
 }

@@ -1,21 +1,13 @@
 import React, {useState} from 'react';
 import classes from "./Col.module.css";
+import ConvertingService from "../../../API/ConvertingService";
 
 const Col = ({colName, sortFoo, itemClassName}) => {
     let innerText;
     let onClickFoo;
     let sortDirection;
 
-    switch (colName) {
-        case "bookName": innerText = "Название"; break;
-        case "author": innerText = "Автор"; break;
-        case "genre": innerText = "Жанры"; break;
-        case "year": innerText = "Год"; break;
-        case "bookDuration": innerText = "Длина"; break;
-        case "imgUrl": innerText = "Картинка"; break;
-        case "torUrl": innerText = "Торрент"; break;
-        case "torSize": innerText = "Размер"; break;
-    }
+    innerText = ConvertingService.getColLocaleName(colName)
 
     const [isUp, setIsUp] = useState(null);
 
